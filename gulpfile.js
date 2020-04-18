@@ -14,6 +14,7 @@ const rigger = require("gulp-rigger");
 const sass = require("gulp-sass");
 const uglify = require("gulp-uglify");
 const panini = require("panini");
+const sourcemaps = require("gulp-sourcemaps");
 const browsersync = require("browser-sync").create();
 
 // Определяем пути к файлам //
@@ -73,6 +74,7 @@ function html() {
 // Сборка CSS //
 function css() {
     return src(path.src.css, {base: "src/assets/sass/"})
+        .pipe(sourcemaps.init())
         .pipe(plumber())
         .pipe(sass())
         .pipe(autoprefixer({
@@ -92,6 +94,7 @@ function css() {
             suffix: ".min",
             extname: ".css"
         }))
+        .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest(path.build.css))
         .pipe(browsersync.stream());
 }
