@@ -57,7 +57,7 @@ function css() {
             cascade: true
         }))
         .pipe(cssbeautify())
-        .pipe(dest(path.build.css))
+        .pipe(gulp.dest(path.build.css))
         .pipe(cssnano({
             zindex: false,
             discsrdComments: {
@@ -69,9 +69,26 @@ function css() {
             suffix: ".min",
             extname: ".css"
         }))
-        .pipe(dest(path.build.css))
+        .pipe(gulp.dest(path.build.css))
+        .pipe(browserSync.stream())
+}
+
+function js() {
+    return src(path.src.js, {base: "src/assets/js/"})
+        .pipe(plumber())
+        .pipe(rigger())
+        .pipe(gulp.dest(path.build.js))
+        .pipe(uglify())
+        .pipe(rename({
+            suffix: ".min",
+            extname: ".js"
+        }))
+        .pipe(gulp.dest(path.build.js))
+        .pipe(browserSync.stream())
+
 }
 
 
 exports.html = html;
 exports.css = css;
+exports.js = js;
