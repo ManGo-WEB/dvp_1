@@ -44,8 +44,11 @@ var path = {
 
 function html() {
     return src(path.src.html, {base: "src/"})
+        .pipe(plumber())
         .pipe(dest(path.build.html));
 }
+
+
 
 
 exports.html = html;
