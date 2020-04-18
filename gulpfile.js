@@ -40,3 +40,12 @@ var path = {
     },
     clean: "./dist"
 }
+
+
+function html() {
+    return src(path.src.html, {base: "src/"})
+        .pipe(dest(path.build.html));
+}
+
+
+exports.html = html;
