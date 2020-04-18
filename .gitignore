@@ -2,3 +2,4 @@
 /dist/
 /.git/
 /**/Thumbs.db
+/package-lock.json
