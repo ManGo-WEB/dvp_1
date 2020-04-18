@@ -102,6 +102,7 @@ function css() {
 // Сборка JS //
 function js() {
     return src(path.src.js, {base: "src/assets/js/"})
+        .pipe(sourcemaps.init())
         .pipe(plumber())
         .pipe(rigger())
         .pipe(gulp.dest(path.build.js))
@@ -110,6 +111,7 @@ function js() {
             suffix: ".min",
             extname: ".js"
         }))
+        .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest(path.build.js))
         .pipe(browsersync.stream());
 
