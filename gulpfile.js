@@ -14,7 +14,7 @@ const rigger = require("gulp-rigger");
 const sass = require("gulp-sass");
 const uglify = require("gulp-uglify");
 const panini = require("panini");
-const browserSync = require("browser-sync").create();
+const browsersync = require("browser-sync").create();
 
 // Определяем пути к файлам //
 var path = {
@@ -42,26 +42,14 @@ var path = {
     clean: "./dist"
 }
 
-// Настройки browserSync //
-function browserSync(done) {
-    browserSync.init({
-        server: {
-            baseDir: "./dist/"
-        },
-        port: 3000
-    });
-}
 
-function browserSyncReload(done) {
-    browserSync.reload();
-}
 
 // Сборка HTML //
 function html() {
     return src(path.src.html, {base: "src/"})
         .pipe(plumber())
         .pipe(dest(path.build.html))
-        .pipe(browserSync.stream());
+        .pipe(browsersync.stream());
 }
 
 // Сборка CSS //
@@ -87,7 +75,7 @@ function css() {
             extname: ".css"
         }))
         .pipe(gulp.dest(path.build.css))
-        .pipe(browserSync.stream());
+        .pipe(browsersync.stream());
 }
 
 // Сборка JS //
@@ -102,7 +90,7 @@ function js() {
             extname: ".js"
         }))
         .pipe(gulp.dest(path.build.js))
-        .pipe(browserSync.stream());
+        .pipe(browsersync.stream());
 
 }
 
@@ -132,6 +120,21 @@ function watchFiles() {
     gulp.watch([path.watch.js], js);
     gulp.watch([path.watch.fonts], fonts);
     gulp.watch([path.watch.images], images);
+}
+
+
+// Настройки browserSync //
+function browserSync(done) {
+    browsersync.init({
+        server: {
+            baseDir: "./dist/"
+        },
+        port: 3000
+    });
+}
+
+function browserSyncReload(done) {
+    browsersync.reload();
 }
 
 const build = gulp.series(clean, gulp.parallel(html, js, css, images, fonts));
