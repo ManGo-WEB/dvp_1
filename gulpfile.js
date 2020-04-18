@@ -26,7 +26,7 @@ var path = {
     },
     src: {
         html: "src/*.html",
-        css: "src/assets/scss/style.scss",
+        css: "src/assets/sass/style.scss",
         js: "src/assets/js/*.js",
         fonts: "src/assets/fonts/**/*.*",
         images: "src/assets/img/**/*.{jpg,gif,ico,png}"
@@ -48,9 +48,30 @@ function html() {
         .pipe(dest(path.build.html));
 }
 
-function css {
+function css() {
     return src(path.src.css, {base: "src/assets/sass/"})
+        .pipe(plumber())
+        .pipe(sass())
+        .pipe(autoprefixer({
+            Browserslist: ['last 8 versions'],
+            cascade: true
+        }))
+        .pipe(cssbeautify())
+        .pipe(dest(path.build.css))
+        .pipe(cssnano({
+            zindex: false,
+            discsrdComments: {
+                removeAll: true
+            }
+        }))
+        .pipe(removeComments())
+        .pipe(rename({
+            suffix: ".min",
+            extname: ".css"
+        }))
+        .pipe(dest(path.build.css))
 }
 
 
 exports.html = html;
+exports.css = css;
