@@ -1,8 +1,7 @@
 {
-  "name": "bc.loc",
+  "name": "gulp4-starter",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   
   "repository": {
     "type": "git",
