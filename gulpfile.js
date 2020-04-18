@@ -16,6 +16,7 @@ const uglify = require("gulp-uglify");
 const panini = require("panini");
 const browserSync = require("browser-sync").create();
 
+// Определяем пути к файлам //
 var path = {
     build: {
         html: "dist/",
@@ -41,7 +42,21 @@ var path = {
     clean: "./dist"
 }
 
+// Настройки browserSync //
+function browserSync(done) {
+    browserSync.init({
+        server: {
+            baseDir: "./dist/"
+        },
+        port: 3000
+    });
+}
 
+function browserSyncReload(done) {
+    browserSync.reload();
+}
+
+// Сборка HTML //
 function html() {
     return src(path.src.html, {base: "src/"})
         .pipe(plumber())
@@ -49,6 +64,7 @@ function html() {
         .pipe(browserSync.stream());
 }
 
+// Сборка CSS //
 function css() {
     return src(path.src.css, {base: "src/assets/sass/"})
         .pipe(plumber())
@@ -74,6 +90,7 @@ function css() {
         .pipe(browserSync.stream());
 }
 
+// Сборка JS //
 function js() {
     return src(path.src.js, {base: "src/assets/js/"})
         .pipe(plumber())
@@ -89,6 +106,7 @@ function js() {
 
 }
 
+// Сборка картинок //
 function images() {
     return src(path.src.images, {base: "src/assets/img/"})
         .pipe(plumber())
@@ -96,15 +114,18 @@ function images() {
         .pipe(gulp.dest(path.build.images));
 }
 
+// Сборка шрифтов //
 function fonts() {
     return src(path.src.fonts, {base: "src/assets/fonts/"})
         .pipe(gulp.dest(path.build.fonts));
 }
 
+// Очистка папки dest //
 function clean() {
     return del(path.clean);
 }
 
+// Watcher //
 function watchFiles() {
     gulp.watch([path.watch.html], html);
     gulp.watch([path.watch.css], css);
@@ -117,11 +138,13 @@ const build = gulp.series(clean, gulp.parallel(html, js, css, images, fonts));
 const watch = gulp.parallel(build, watchFiles, browserSync);
 
 
-
+// Export tasks //
 exports.html = html;
 exports.css = css;
 exports.js = js;
 exports.images = images;
 exports.fonts = fonts;
 exports.clean = clean;
-exports.watchFiles = watchFiles;
+exports.watch = watch;
+exports.build = build;
+exports.default = watch;
