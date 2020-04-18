@@ -114,6 +114,7 @@ function watchFiles() {
 }
 
 const build = gulp.series(clean, gulp.parallel(html, js, css, images, fonts));
+const watch = gulp.parallel(build, watchFiles, browserSync);
 
 
 
