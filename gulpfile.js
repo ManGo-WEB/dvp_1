@@ -42,12 +42,31 @@ var path = {
     clean: "./dist"
 }
 
+// Настройки browserSync //
+function browserSync(done) {
+    browsersync.init({
+        server: {
+            baseDir: "./dist/"
+        },
+        port: 3000
+    });
+}
 
+function browserSyncReload(done) {
+    browsersync.reload();
+}
 
 // Сборка HTML //
 function html() {
     return src(path.src.html, {base: "src/"})
         .pipe(plumber())
+        .pipe(panini({
+            root: 'pages/',
+            layouts: 'layouts/',
+            partials: 'partials/',
+            helpers: 'helpers/',
+            data: 'data/'
+          }))
         .pipe(dest(path.build.html))
         .pipe(browsersync.stream());
 }
@@ -120,21 +139,6 @@ function watchFiles() {
     gulp.watch([path.watch.js], js);
     gulp.watch([path.watch.fonts], fonts);
     gulp.watch([path.watch.images], images);
-}
-
-
-// Настройки browserSync //
-function browserSync(done) {
-    browsersync.init({
-        server: {
-            baseDir: "./dist/"
-        },
-        port: 3000
-    });
-}
-
-function browserSyncReload(done) {
-    browsersync.reload();
 }
 
 const build = gulp.series(clean, gulp.parallel(html, js, css, images, fonts));
