@@ -45,7 +45,8 @@ var path = {
 function html() {
     return src(path.src.html, {base: "src/"})
         .pipe(plumber())
-        .pipe(dest(path.build.html));
+        .pipe(dest(path.build.html))
+        .pipe(browserSync.stream());
 }
 
 function css() {
@@ -70,7 +71,7 @@ function css() {
             extname: ".css"
         }))
         .pipe(gulp.dest(path.build.css))
-        .pipe(browserSync.stream())
+        .pipe(browserSync.stream());
 }
 
 function js() {
@@ -84,11 +85,20 @@ function js() {
             extname: ".js"
         }))
         .pipe(gulp.dest(path.build.js))
-        .pipe(browserSync.stream())
+        .pipe(browserSync.stream());
 
 }
 
+function images() {
+    return src(path.src.images, {base: "src/assets/img/"})
+        .pipe(plumber())
+        .pipe(imagemin())
+        .pipe(gulp.dest(path.build.images));
 
+
+
+}
 exports.html = html;
 exports.css = css;
 exports.js = js;
+exports.images = images;
