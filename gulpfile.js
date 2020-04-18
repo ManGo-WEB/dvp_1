@@ -38,4 +38,5 @@ var path = {
         fonts: "/src/assets/fonts/**/*.*",
         images: "/src/assets/img/**/*.{jpg,gif,ico,png}"
     },
+    clean: "./dist"
 }
