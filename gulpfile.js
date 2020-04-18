@@ -33,7 +33,7 @@ var path = {
     },
     watch: {
         html: "src/**/*.html",
-        css: "src/assets/scss/**/*.scss",
+        css: "src/assets/sass/**/*.scss",
         js: "src/assets/js/**/*.js",
         fonts: "src/assets/fonts/**/*.*",
         images: "src/assets/img/**/*.{jpg,gif,ico,png}"
@@ -48,7 +48,9 @@ function html() {
         .pipe(dest(path.build.html));
 }
 
-
+function css {
+    return src(path.src.css, {base: "src/assets/sass/"})
+}
 
 
 exports.html = html;
