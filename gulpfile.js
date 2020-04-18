@@ -15,3 +15,27 @@ const sass = require("gulp-sass");
 const uglify = require("gulp-uglify");
 const panini = require("panini");
 const browserSync = require("browser-sync").create();
+
+var path = {
+    build {
+        html: "/dist/",
+        css: "/dist/assets/css/",
+        js: "/dist/assets/js/",
+        fonts: "/dist/assets/fonts/",
+        images: "/dist/assets/img/"
+    },
+    src {
+        html: "/src/*.html",
+        css: "/src/assets/scss/style.scss",
+        js: "/src/assets/js/*.js",
+        fonts: "/src/assets/fonts/**/*.*",
+        images: "/src/assets/img/**/*.{jpg,gif,ico,png}"
+    },
+    watch {
+        html: "/src/**/*.html",
+        css: "/src/assets/scss/**/*.scss",
+        js: "/src/assets/js/**/*.js",
+        fonts: "/src/assets/fonts/**/*.*",
+        images: "/src/assets/img/**/*.{jpg,gif,ico,png}"
+    },
+}
