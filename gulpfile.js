@@ -94,11 +94,16 @@ function images() {
         .pipe(plumber())
         .pipe(imagemin())
         .pipe(gulp.dest(path.build.images));
-
-
-
 }
+
+function clean() {
+    return del(path.clean);
+}
+
+
+
 exports.html = html;
 exports.css = css;
 exports.js = js;
 exports.images = images;
+exports.clean = clean;
