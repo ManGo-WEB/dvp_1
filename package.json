@@ -30,6 +30,7 @@
     "panini": "^1.6.3"
   },
   "dependencies": {
-    "bootstrap": "^4.4.1"
+    "bootstrap": "^4.4.1",
+    "slick-carousel": "^1.8.1"
   }
 }
