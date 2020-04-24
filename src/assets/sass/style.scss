@@ -10,11 +10,19 @@
 
 
 // Blocks //
+@import "blocks/page";
+@import "blocks/content";
 @import "blocks/header";
+@import "blocks/footer";
 @import "blocks/logo";
 @import "blocks/nav";
 @import "blocks/lang";
-//@import "blocks/btn";
+@import "blocks/intro";
+@import "blocks/btn";
+@import "blocks/btn";
+@import "blocks/contacts";
+@import "blocks/autor";
+@import "blocks/circle";
 
 
 // Vendors //
