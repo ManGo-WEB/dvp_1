@@ -1,0 +1,39 @@
+.modal-content {
+    width: 100%;
+    padding: 2rem;
+    position: relative;
+
+    background-color: $white;
+    box-shadow: $shadow;
+    border-radius: $radius_small;
+}
+.modal__close {
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    cursor: pointer;
+
+    background: none;
+    border: none;
+
+    position: absolute;
+    top: -2.2rem;
+    right: -2.2rem;
+
+    transition: transform .2s linear;
+
+    &:focus {
+        outline: 0;
+    }
+
+    &:hover {
+        transform: rotate(180deg);
+    }
+}
+.modal__close-icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    fill: $white;
+}
