@@ -5,3 +5,11 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.content__title {
+    margin: 0 0 2rem;
+
+    font-size: 2rem;
+    color: $black;
+    font-weight: 700;
+}
