@@ -1,19 +1,29 @@
 <div class="modal fade" id="request-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+        <button type="button" class="modal__close" data-dismiss="modal" aria-label="Close">
+            <svg class="modal__close-icon">
+                <use xlink: href="#close"></use>
+            </svg>
+        </button>
+
+        <div class="modal__title">Оставить заявку</div>
+        <div class="modal__text">Заполните форму ниже и я свяжусь с Вами в ближайшее время</div>
+
+        <form action="" class="form" method="POST">
+            <div class="form__group">
+                <input type="text" class="input" placeholder="Ваше имя">
+            </div>
+            <div class="form__group">
+                <input type="text" class="input" placeholder="Ваш e-mail">
+            </div>
+            <div class="form__group">
+                <input type="text" class="input" placeholder="Ваш телефон">
+            </div>
+        </form>
+            
+        
+        
       </div>
     </div>
   </div>
