@@ -37,3 +37,20 @@
 
     fill: $white;
 }
+
+.modal__title {
+    margin-bottom: 0.5rem;
+
+    color: $pink;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.modal__text {
+    margin-bottom: 2rem;
+    
+    font-size: 1rem;
+    line-height: 1.2rem;
+    color: $black;
+    font-weight: 500;
+}
