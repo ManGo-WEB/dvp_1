@@ -1,0 +1,39 @@
+.services {
+    margin-bottom: 2rem;
+}
+
+.services__item {
+    padding: 1.2rem;
+    position: relative;
+    height: 100%;
+    
+    background-color: $white;
+    border-radius: $radius;
+    box-shadow: $shadow;
+}
+
+.services__icon {
+    width: 50px;
+    height: 50px;
+
+    position: absolute;
+    top: 1rem;
+    left: 1.2rem;
+}
+
+.services__title {
+    padding-left: 5rem;
+    margin-top: 0.5rem;
+
+    font-size: 1.4rem;
+    color: $black;
+    font-weight: 500;
+}
+
+.services__text {
+    margin-top: 2rem;
+
+    font-size: 1rem;
+    color: $black;
+    font-weight: 400;
+}
