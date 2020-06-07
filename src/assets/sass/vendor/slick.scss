@@ -260,6 +260,7 @@ $slick-opacity-not-active: 0.25 !default;
 .slick-slide {
     float: left;
     height: 100%;
+    padding: 0 1rem;
     min-height: 1px;
     [dir="rtl"] & {
         float: right;
@@ -293,6 +294,10 @@ $slick-opacity-not-active: 0.25 !default;
 }
 .slick-arrow.slick-hidden {
     display: none;
+}
+
+.slick-arrow {
+    
 }
 
 

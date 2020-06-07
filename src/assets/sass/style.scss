@@ -21,7 +21,6 @@
 @import "blocks/lang";
 @import "blocks/intro";
 @import "blocks/btn";
-@import "blocks/btn";
 @import "blocks/contacts";
 @import "blocks/autor";
 @import "blocks/circle";
@@ -34,7 +33,9 @@
 
 
 // Vendors //
-@import "vendor/slick";
+// @import "../../../node_modules/slick-carousel/slick/slick-theme";
+@import "vendor/slick.scss";
+
 
 
 *,
